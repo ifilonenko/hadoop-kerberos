@@ -1,0 +1,61 @@
+version: "2"
+services:
+  kerberos:
+    container_name: kerberos.example
+    hostname: kerberos.example.com
+    entrypoint: /start-kdc.sh
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+    volumes:
+      - server-keytab:/var/keytabs
+
+  nn:
+    container_name: nn.example
+    hostname: nn.example.com
+    user: hdfs
+    entrypoint: /start-namenode.sh
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+    volumes:
+      - server-keytab:/var/keytabs
+      - /hadoop
+
+  dn1:
+    container_name: dn1.example
+    hostname: dn1.example.com
+    user: hdfs
+    entrypoint: /start-datanode.sh
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+    volumes:
+      - server-keytab:/var/keytabs
+
+  data-populator:
+    container_name: data-populator.example
+    hostname: data-populator.example.com
+    user: hdfs
+    entrypoint: /populate-data.sh
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+    volumes:
+      - server-keytab:/var/keytabs
+
+networks:
+  default:
+    external:
+      name: com
+
+volumes:
+  server-keytab:
