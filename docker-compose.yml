@@ -13,6 +13,8 @@ services:
       - server-keytab:/var/keytabs
 
   nn:
+    ports:
+      - 9000:9000
     container_name: nn.example
     hostname: nn.example.com
     user: hdfs
