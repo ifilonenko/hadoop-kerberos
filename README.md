@@ -22,7 +22,7 @@ docker-compose up -d --force-recreate --build
 ```
 docker exec -it nn.example /bin/bash
 kinit -kt /var/keytabs/hdfs.keytab hdfs/nn.example.com
-hdfs dfs -ls
+hdfs dfs -ls /
 ```
 
 

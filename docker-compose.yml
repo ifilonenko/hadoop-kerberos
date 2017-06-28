@@ -1,7 +1,7 @@
 version: "2"
 services:
   kerberos:
-    container_name: kerberos.example
+    container_name: kerberos-example
     hostname: kerberos.example.com
     entrypoint: /start-kdc.sh
     build:
@@ -15,7 +15,7 @@ services:
   nn:
     ports:
       - 9000:9000
-    container_name: nn.example
+    container_name: nn-example
     hostname: nn.example.com
     user: hdfs
     entrypoint: /start-namenode.sh
@@ -29,7 +29,7 @@ services:
       - /hadoop
 
   dn1:
-    container_name: dn1.example
+    container_name: dn1-example
     hostname: dn1.example.com
     user: hdfs
     entrypoint: /start-datanode.sh
@@ -42,7 +42,7 @@ services:
       - server-keytab:/var/keytabs
 
   data-populator:
-    container_name: data-populator.example
+    container_name: data-populator
     hostname: data-populator.example.com
     user: hdfs
     entrypoint: /populate-data.sh
