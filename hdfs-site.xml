@@ -80,22 +80,6 @@
     <name>dfs.http.policy</name>
     <value>HTTPS_ONLY</value>
   </property>
-
-
-  <property>
-    <name>dfs.namenode.keytab.file</name>
-    <value>/var/keytabs/hdfs.keytab</value>
-  </property>
-  <property>
-    <name>dfs.namenode.kerberos.principal</name>
-    <value>hdfs/_HOST@EXAMPLE.COM</value>
-  </property>
-  <property>
-    <name>dfs.namenode.kerberos.internal.spnego.principal</name>
-    <value>HTTP/_HOST@EXAMPLE.COM</value>
-  </property>
-
-
   <property>
     <name>dfs.datanode.data.dir.perm</name>
     <value>700</value> 
